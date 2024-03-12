@@ -44,6 +44,9 @@ h1 = df_mupt.Histo1D(("mupt", "mupt", 300, 0, 300), "mupt")
 # Compute invariant mass of the dimuon system
 #df_mass = df_os.Define("Dimuon_mass", "InvariantMass(Muon_pt, Muon_eta, Muon_phi, Muon_mass)")
 
+# -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+# ptsum
+
 # Request cut-flow report
 report = df_ptsum.Report()
 
@@ -58,6 +61,26 @@ h.GetYaxis().SetTitle("N_{Events}"); h.GetYaxis().SetTitleSize(0.04)
 h.Draw()
 
 c.SaveAs("ptsum_from_dimuonExample.pdf")
+
+# Print cut-flow report
+report.Print()
+
+# -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+# mupt
+report = df_mupt.Report()
+
+# Produce plot
+ROOT.gStyle.SetOptStat(0); ROOT.gStyle.SetTextFont(42)
+c1 = ROOT.TCanvas("c1", "", 800, 700)
+c1.SetLogx(); c.SetLogy()
+
+# Axis 저렇게 하는게 맞나?
+h1.SetTitle("")
+h1.GetXaxis().SetTitle("m_{#mu#mu} (GeV)"); h1.GetXaxis().SetTitleSize(0.04)
+h1.GetYaxis().SetTitle("N_{Events}"); h1.GetYaxis().SetTitleSize(0.04)
+h1.Draw()
+
+c1.SaveAs("mupt_from_dimuonExample.pdf")
 
 # Print cut-flow report
 report.Print()
