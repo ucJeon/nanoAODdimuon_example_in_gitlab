@@ -1,4 +1,4 @@
-# source 
+# source
 
 # source /cvmfs/sft.cern.ch/lcg/views/LCG_104/x86_64-el9-gcc11-opt/setup.sh
 # based on $ROOTSYS/tutorials/dataframe/df102_NanoAODDimuonAnalysis.py
@@ -13,7 +13,7 @@ ROOT.ROOT.EnableImplicitMT()
 # Create dataframe from NanoAOD files
 # It's version : nanoAODv7
 # filedir = "/hdfs/mc/RunIISummer16NanoAODv7/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/NANOAODSIM/PUMoriond17_Nano02Apr2020_102X_mcRun2_asymptotic_v8_ext1-v1/260000"
-# Let's run for version v9 : 40000 or 50000? 
+# Let's run for version v9 : 40000 or 50000?
 # ./40000
 filedir = "/hdfs/mc/RunIISummer20UL16NanoAODv9/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/NANOAODSIM/106X_mcRun2_asymptotic_v17-v1/40000"
 
