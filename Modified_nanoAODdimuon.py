@@ -9,7 +9,6 @@ import ROOT,glob
 
 # Enable multi-threading
 ROOT.ROOT.EnableImplicitMT()
-ROOT.ROOT.EnableImplicitMT()
 
 # Create dataframe from NanoAOD files
 # It's version : nanoAODv7
