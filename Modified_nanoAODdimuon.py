@@ -1,4 +1,5 @@
-# source
+import os
+os.system("source /cvmfs/sft.cern.ch/lcg/views/LCG_104/x86_64-el9-gcc11-opt/setup.sh")
 
 # source /cvmfs/sft.cern.ch/lcg/views/LCG_104/x86_64-el9-gcc11-opt/setup.sh
 # based on $ROOTSYS/tutorials/dataframe/df102_NanoAODDimuonAnalysis.py
@@ -72,7 +73,7 @@ report = df_mupt.Report()
 # Produce plot
 ROOT.gStyle.SetOptStat(0); ROOT.gStyle.SetTextFont(42)
 c1 = ROOT.TCanvas("c1", "", 800, 700)
-c1.SetLogx(); c.SetLogy()
+c1.SetLogx(); c1.SetLogy()
 
 # Axis 저렇게 하는게 맞나?
 h1.SetTitle("")
