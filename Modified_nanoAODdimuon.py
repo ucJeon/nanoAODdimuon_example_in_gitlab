@@ -24,7 +24,6 @@ filelist = glob.glob(filedir+'/*.root')
 files = ROOT.std.vector("string")(len(filelist))
 for i in range(len(filelist)):
     files[i] = filelist[i]
-    # print(file[2;2R[3;1R[>0;95;0c]10;rgb:dca9/dcab/dcaa]11;rgb:14a7/195f/1efbs)
 
 # make ROOT Dataframe from files.
 df = ROOT.ROOT.RDataFrame("Events", files)
@@ -35,15 +34,14 @@ df_2mu = df_trigger.Filter("nMuon == 2", "Events with exactly two muons")
 df_os = df_2mu.Filter("Muon_charge[0] != Muon_charge[1]", "Muons with opposite charge")
 
 # set columns.
-df_mupt = df_os.Define("mupt", "Muon_pt")
 df_ptsum = df_os.Define("ptsum", "Muon_pt[0]+Muon_pt[1]")
 
 # Make histogram of dimuon mass spectrum
 h = df_ptsum.Histo1D(("ptsum", "ptsum", 300, 0, 300), "ptsum")
-h1 = df_mupt.Histo1D(("mupt", "mupt", 300, 0, 300), "mupt")
 
 # Compute invariant mass of the dimuon system
-#df_mass = df_os.Define("Dimuon_mass", "InvariantMass(Muon_pt, Muon_eta, Muon_phi, Muon_mass)")
+# df_mass = df_os.Define("Dimuon_mass", "InvariantMass(Muon_pt, Muon_eta, Muon_phi, Muon_mass)")
+
 
 # -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 # ptsum
@@ -58,6 +56,7 @@ c.SetLogx(); c.SetLogy()
 
 h.SetTitle("")
 h.GetXaxis().SetTitle("m_{#mu#mu} (GeV)"); h.GetXaxis().SetTitleSize(0.04)
+# Modifying is needed.
 h.GetYaxis().SetTitle("N_{Events}"); h.GetYaxis().SetTitleSize(0.04)
 h.Draw()
 
@@ -66,22 +65,3 @@ c.SaveAs("ptsum_from_dimuonExample.pdf")
 # Print cut-flow report
 report.Print()
 
-# -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-# mupt
-report = df_mupt.Report()
-
-# Produce plot
-ROOT.gStyle.SetOptStat(0); ROOT.gStyle.SetTextFont(42)
-c1 = ROOT.TCanvas("c1", "", 800, 700)
-c1.SetLogx(); c1.SetLogy()
-
-# Axis 저렇게 하는게 맞나?
-h1.SetTitle("")
-h1.GetXaxis().SetTitle("m_{#mu#mu} (GeV)"); h1.GetXaxis().SetTitleSize(0.04)
-h1.GetYaxis().SetTitle("N_{Events}"); h1.GetYaxis().SetTitleSize(0.04)
-h1.Draw()
-
-c1.SaveAs("mupt_from_dimuonExample.pdf")
-
-# Print cut-flow report
-report.Print()
