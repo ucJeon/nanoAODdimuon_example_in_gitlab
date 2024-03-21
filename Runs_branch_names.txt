@@ -1,8 +1,0 @@
-run
-genEventCount
-genEventSumw
-genEventSumw2
-nLHEScaleSumw
-LHEScaleSumw
-nLHEPdfSumw
-LHEPdfSumw
